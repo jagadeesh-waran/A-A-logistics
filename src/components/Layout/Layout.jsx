@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Sidebar from '../Sidebar/Sidebar';
 import Navbar from '../Navbar/Navbar';
@@ -13,6 +13,12 @@ export const useToastContext = () => useContext(ToastContext);
 const Layout = () => {
   const { toasts, removeToast, toast } = useToast();
   const location = useLocation();
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+
+  // Automatically close mobile sidebar on navigation
+  useEffect(() => {
+    setIsMobileSidebarOpen(false);
+  }, [location.pathname]);
 
   return (
     <ToastContext.Provider value={toast}>
@@ -29,9 +35,14 @@ const Layout = () => {
       <div className="gradient-blur" />
 
       <div className="layout relative z-10">
-        <Sidebar />
+        <Sidebar
+          isMobileOpen={isMobileSidebarOpen}
+          onClose={() => setIsMobileSidebarOpen(false)}
+        />
         <div className="layout__main">
-          <Navbar />
+          <Navbar
+            onToggleSidebar={() => setIsMobileSidebarOpen((prev) => !prev)}
+          />
           <main className="layout__content" key={location.pathname}>
             <Outlet />
           </main>

@@ -204,10 +204,10 @@ const AllLLR = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
           <button
             onClick={handleExportCSV}
-            className="group px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-medium hover:text-white hover:bg-zinc-800 transition-all flex items-center gap-2 text-xs cursor-pointer"
+            className="group flex-1 sm:flex-none justify-center px-3 sm:px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-medium hover:text-white hover:bg-zinc-800 transition-all flex items-center gap-1.5 sm:gap-2 text-xs cursor-pointer"
           >
             <Download size={14} className="text-[#ef233c]" />
             <span>Export CSV</span>
@@ -215,7 +215,7 @@ const AllLLR = () => {
 
           <button
             onClick={() => navigate('/create-llr')}
-            className="shiny-cta text-xs py-2 px-5 font-bold"
+            className="shiny-cta flex-1 sm:flex-none justify-center text-xs py-2 px-4 sm:px-5 font-bold whitespace-nowrap"
           >
             <Plus size={14} className="text-[#ef233c]" />
             <span>New LLR</span>
@@ -224,14 +224,14 @@ const AllLLR = () => {
       </div>
 
       {/* 2. Controls & Filter Bar */}
-      <div className="p-6 rounded-2xl border border-white/10 bg-black shadow-xl space-y-5">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-5 border-b border-white/10">
+      <div className="p-4 sm:p-6 rounded-2xl border border-white/10 bg-black shadow-xl space-y-4 sm:space-y-5">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-5 border-b border-white/10">
           {/* Search Box */}
           <div className="relative w-full sm:w-80">
             <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none" size={14} />
             <input
               type="text"
-              placeholder="Search by LLR #, Party, Dest, Truck..."
+              placeholder="Search LLR, Party, Dest, Truck..."
               value={searchTerm}
               onChange={handleSearchChange}
               className="w-full h-9 pl-9 pr-8 rounded-full bg-white/5 border border-white/10 text-xs text-white placeholder:text-zinc-600 focus:outline-none focus:border-[#ef233c] transition-all"
@@ -249,14 +249,14 @@ const AllLLR = () => {
             )}
           </div>
 
-          <div className="flex items-center gap-3 w-full sm:w-auto justify-end flex-wrap">
+          <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto justify-between sm:justify-end flex-wrap">
             {/* Status Select */}
-            <div className="relative flex items-center">
+            <div className="relative flex items-center flex-1 sm:flex-initial">
               <Filter size={13} className="absolute left-3 text-zinc-500 pointer-events-none" />
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="h-9 pl-8 pr-7 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-300 cursor-pointer focus:outline-none focus:border-[#ef233c] transition-all"
+                className="w-full sm:w-auto h-9 pl-8 pr-7 rounded-full bg-white/5 border border-white/10 text-xs text-zinc-300 cursor-pointer focus:outline-none focus:border-[#ef233c] transition-all"
               >
                 <option value="All" className="bg-zinc-950">All Statuses</option>
                 <option value="Booked" className="bg-zinc-950">Booked</option>
@@ -272,7 +272,7 @@ const AllLLR = () => {
               onClick={() =>
                 setSortOrder((prev) => (prev === 'desc' ? 'asc' : 'desc'))
               }
-              className="px-3.5 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-zinc-300 flex items-center gap-1.5 transition-all cursor-pointer"
+              className="px-3.5 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-zinc-300 flex items-center gap-1.5 transition-all cursor-pointer flex-1 sm:flex-initial justify-center"
             >
               <ArrowUpDown size={12} className="text-[#ef233c]" />
               <span>{sortOrder === 'desc' ? 'Newest' : 'Oldest'}</span>

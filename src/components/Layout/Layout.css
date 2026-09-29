@@ -27,8 +27,19 @@
 @media (max-width: 1024px) {
   .layout__main {
     margin-left: 0;
+    max-width: 100%;
+    width: 100%;
+    overflow-x: hidden;
   }
   .layout__content {
     padding: 1.25rem 1rem 2.5rem;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media (max-width: 640px) {
+  .layout__content {
+    padding: 1rem 0.75rem 2rem;
   }
 }

@@ -152,23 +152,23 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container animate-fade-up">
       {/* 1. Superdesign Style Hero Banner */}
-      <div className="superdesign-hero-banner relative p-8 md:p-10 rounded-2xl border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black overflow-hidden shadow-2xl">
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+      <div className="superdesign-hero-banner relative p-5 sm:p-8 md:p-10 rounded-2xl border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black overflow-hidden shadow-2xl">
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8">
           <div className="max-w-2xl">
             {/* Live Indicator Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-5">
-              <span className="relative flex h-2 w-2">
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4 sm:mb-5">
+              <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ef233c]" />
               </span>
-              <span className="text-xs font-medium font-manrope text-red-100/90 tracking-wide">
+              <span className="text-[11px] sm:text-xs font-medium font-manrope text-red-100/90 tracking-wide">
                 A&amp;A Logistics Intelligence 2.0 is live
               </span>
-              <ArrowRight size={12} className="text-red-400" />
+              <ArrowRight size={12} className="text-red-400 shrink-0" />
             </div>
 
             {/* Gradient Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight font-manrope leading-[1.15] mb-4">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight font-manrope leading-[1.15] mb-3 sm:mb-4">
               <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/40">
                 Logistics Intelligence
               </span>
@@ -183,22 +183,22 @@ const Dashboard = () => {
               </span>
             </h1>
 
-            <p className="text-sm sm:text-base text-zinc-400 font-light leading-relaxed">
+            <p className="text-xs sm:text-sm md:text-base text-zinc-400 font-light leading-relaxed">
               Ship commercial freight and generate official Lorry Receipts 10x faster with AI-grade design intelligence and local sync.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row md:flex-col items-start md:items-end gap-4">
-            <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-xs font-inter text-zinc-300">
-              <Calendar size={13} className="text-[#ef233c]" />
-              <span>{currentDateFormatted}</span>
+          <div className="flex flex-row sm:flex-row md:flex-col items-center sm:items-center md:items-end justify-between sm:justify-start gap-3 sm:gap-4 w-full md:w-auto">
+            <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 border border-white/10 text-[11px] sm:text-xs font-inter text-zinc-300">
+              <Calendar size={13} className="text-[#ef233c] shrink-0" />
+              <span className="whitespace-nowrap">{currentDateFormatted}</span>
             </div>
 
             <button
               onClick={() => navigate('/create-llr')}
-              className="shiny-cta group"
+              className="shiny-cta group text-xs sm:text-sm py-2 px-4 sm:px-6"
             >
-              <span className="relative z-10 flex items-center gap-2 text-white font-medium">
+              <span className="relative z-10 flex items-center gap-1.5 sm:gap-2 text-white font-medium whitespace-nowrap">
                 Generate LLR <ArrowRight size={14} className="transition-transform group-hover:translate-x-1 text-[#ef233c]" />
               </span>
             </button>
@@ -213,26 +213,26 @@ const Dashboard = () => {
       </div>
 
       {/* 2. Key Performance Metric Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {statsCards.map((card, index) => {
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        {statsCards.map((card) => {
           const Icon = card.icon;
           return (
             <div
               key={card.id}
-              className="group relative overflow-hidden p-6 border border-white/10 bg-black hover:border-white/20 transition-all rounded-xl shadow-lg"
+              className="group relative overflow-hidden p-4 sm:p-6 border border-white/10 bg-black hover:border-white/20 transition-all rounded-xl shadow-lg"
             >
               <div className="relative z-10 flex flex-col h-full">
-                <div className="flex items-center justify-between mb-4">
-                  <div className={`inline-flex p-2.5 rounded-lg bg-white/5 border border-white/10 ${card.iconColor}`}>
-                    <Icon size={19} />
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <div className={`inline-flex p-2 sm:p-2.5 rounded-lg bg-white/5 border border-white/10 ${card.iconColor}`}>
+                    <Icon size={18} />
                   </div>
-                  <span className="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-zinc-400">
+                  <span className="text-[10px] sm:text-[11px] font-mono px-2 sm:px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-zinc-400">
                     {card.change}
                   </span>
                 </div>
 
                 <div className="mt-1">
-                  <span className="text-2xl sm:text-3xl font-bold font-manrope text-white tracking-tight block mb-1">
+                  <span className="text-xl sm:text-2xl lg:text-3xl font-bold font-manrope text-white tracking-tight block mb-0.5 sm:mb-1">
                     {card.value}
                   </span>
                   <span className="text-xs font-semibold text-zinc-400 font-manrope">
@@ -240,9 +240,9 @@ const Dashboard = () => {
                   </span>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-white/5">
+                <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-white/5">
                   <span
-                    className="text-[11px] text-zinc-500 font-inter"
+                    className="text-[10px] sm:text-[11px] text-zinc-500 font-inter"
                     dangerouslySetInnerHTML={{ __html: card.subtext }}
                   />
                 </div>
@@ -258,32 +258,32 @@ const Dashboard = () => {
         })}
       </div>
 
-      {/* 3. Features Bento Grid (Inspired by Reference) */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+      {/* 3. Features Bento Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4">
         {/* Main Bento Feature: Dispatch System Engine */}
-        <div className="lg:col-span-2 group relative overflow-hidden p-7 border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black hover:border-white/20 transition-all rounded-xl shadow-xl">
+        <div className="lg:col-span-2 group relative overflow-hidden p-4 sm:p-6 md:p-7 border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black hover:border-white/20 transition-all rounded-xl shadow-xl">
           <div className="relative z-10 flex flex-col h-full">
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-6">
               <div className="flex items-center gap-3">
-                <div className="inline-flex p-2.5 rounded-lg bg-white/5 border border-white/10 text-[#ef233c]">
-                  <Activity size={20} />
+                <div className="inline-flex p-2 sm:p-2.5 rounded-lg bg-white/5 border border-white/10 text-[#ef233c] shrink-0">
+                  <Activity size={18} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white font-manrope tracking-tight">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-white font-manrope tracking-tight">
                     Operating System for Freight Dispatch
                   </h3>
-                  <p className="text-xs text-zinc-400 font-light">
+                  <p className="text-[11px] sm:text-xs text-zinc-400 font-light">
                     Real-time status breakdown and fleet synchronization
                   </p>
                 </div>
               </div>
-              <span className="text-xs font-mono text-[#ef233c] bg-[#ef233c]/10 border border-[#ef233c]/20 px-3 py-1 rounded-full font-bold">
+              <span className="self-start sm:self-center text-xs font-mono text-[#ef233c] bg-[#ef233c]/10 border border-[#ef233c]/20 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full font-bold">
                 {totalLLR} Records
               </span>
             </div>
 
             {/* Stacked Progress Bar */}
-            <div className="space-y-4 my-auto">
+            <div className="space-y-3 sm:space-y-4 my-auto">
               <div className="flex h-2.5 rounded-full overflow-hidden bg-white/5 gap-1 p-0.5">
                 <div
                   style={{ width: `${deliveryRate}%` }}
@@ -302,45 +302,45 @@ const Dashboard = () => {
                 />
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                <div className="p-3.5 rounded-xl bg-black border border-white/5">
-                  <div className="flex items-center gap-2 text-xs text-emerald-400 mb-1 font-manrope font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-emerald-400" />
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+                <div className="p-2.5 sm:p-3.5 rounded-xl bg-black border border-white/5">
+                  <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-emerald-400 mb-0.5 sm:mb-1 font-manrope font-semibold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
                     <span>Delivered</span>
                   </div>
-                  <div className="text-lg font-bold font-manrope text-white">
-                    {deliveredLLR} <span className="text-xs font-normal text-zinc-500">({deliveryRate}%)</span>
+                  <div className="text-base sm:text-lg font-bold font-manrope text-white">
+                    {deliveredLLR} <span className="text-[10px] sm:text-xs font-normal text-zinc-500">({deliveryRate}%)</span>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-black border border-white/5">
-                  <div className="flex items-center gap-2 text-xs text-amber-400 mb-1 font-manrope font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-amber-400" />
+                <div className="p-2.5 sm:p-3.5 rounded-xl bg-black border border-white/5">
+                  <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-amber-400 mb-0.5 sm:mb-1 font-manrope font-semibold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
                     <span>In Transit</span>
                   </div>
-                  <div className="text-lg font-bold font-manrope text-white">
-                    {inTransitLLR} <span className="text-xs font-normal text-zinc-500">({transitRate}%)</span>
+                  <div className="text-base sm:text-lg font-bold font-manrope text-white">
+                    {inTransitLLR} <span className="text-[10px] sm:text-xs font-normal text-zinc-500">({transitRate}%)</span>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-black border border-white/5">
-                  <div className="flex items-center gap-2 text-xs text-blue-400 mb-1 font-manrope font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-blue-400" />
+                <div className="p-2.5 sm:p-3.5 rounded-xl bg-black border border-white/5">
+                  <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-blue-400 mb-0.5 sm:mb-1 font-manrope font-semibold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
                     <span>Booked</span>
                   </div>
-                  <div className="text-lg font-bold font-manrope text-white">
-                    {bookedLLR} <span className="text-xs font-normal text-zinc-500">({bookedRate}%)</span>
+                  <div className="text-base sm:text-lg font-bold font-manrope text-white">
+                    {bookedLLR} <span className="text-[10px] sm:text-xs font-normal text-zinc-500">({bookedRate}%)</span>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-black border border-white/5">
-                  <div className="flex items-center gap-2 text-xs text-red-400 mb-1 font-manrope font-semibold">
-                    <span className="w-2 h-2 rounded-full bg-[#ef233c]" />
+                <div className="p-2.5 sm:p-3.5 rounded-xl bg-black border border-white/5">
+                  <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-red-400 mb-0.5 sm:mb-1 font-manrope font-semibold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#ef233c] shrink-0" />
                     <span>Cancelled</span>
                   </div>
-                  <div className="text-lg font-bold font-manrope text-white">
+                  <div className="text-base sm:text-lg font-bold font-manrope text-white">
                     {cancelledLLR}{' '}
-                    <span className="text-xs font-normal text-zinc-500">
+                    <span className="text-[10px] sm:text-xs font-normal text-zinc-500">
                       ({totalLLR > 0 ? Math.round((cancelledLLR / totalLLR) * 100) : 0}%)
                     </span>
                   </div>
@@ -348,8 +348,8 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-              <span className="text-xs text-zinc-400">All local manifests validated</span>
+            <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/5 flex items-center justify-between">
+              <span className="text-[11px] sm:text-xs text-zinc-400">All local manifests validated</span>
               <button
                 onClick={() => navigate('/all-llr')}
                 className="text-xs font-mono text-[#ef233c] hover:underline flex items-center gap-1 cursor-pointer"
@@ -366,62 +366,62 @@ const Dashboard = () => {
         </div>
 
         {/* Bento Feature 2: Quick Action Console */}
-        <div className="group relative overflow-hidden p-7 border border-white/10 bg-black hover:border-white/20 transition-all rounded-xl flex flex-col justify-between shadow-xl">
+        <div className="group relative overflow-hidden p-4 sm:p-6 md:p-7 border border-white/10 bg-black hover:border-white/20 transition-all rounded-xl flex flex-col justify-between shadow-xl">
           <div className="relative z-10">
-            <div className="flex items-center gap-2.5 mb-5">
-              <div className="inline-flex p-2.5 rounded-lg bg-white/5 border border-white/10 text-yellow-400">
+            <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
+              <div className="inline-flex p-2 sm:p-2.5 rounded-lg bg-white/5 border border-white/10 text-yellow-400 shrink-0">
                 <Zap size={18} />
               </div>
-              <h3 className="text-lg font-bold text-white font-manrope">Instant Dispatch</h3>
+              <h3 className="text-base sm:text-lg font-bold text-white font-manrope">Instant Dispatch</h3>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2.5 sm:space-y-3">
               <button
                 onClick={() => navigate('/create-llr')}
-                className="w-full p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-between text-left cursor-pointer group/btn"
+                className="w-full p-2.5 sm:p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-between text-left cursor-pointer group/btn"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#ef233c]/20 text-[#ef233c] flex items-center justify-center font-bold">
-                    <Plus size={16} />
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#ef233c]/20 text-[#ef233c] flex items-center justify-center font-bold shrink-0">
+                    <Plus size={15} />
                   </div>
                   <div>
                     <span className="text-xs font-bold font-manrope text-white block">Create New LLR</span>
-                    <span className="text-[11px] text-zinc-400">Generate consignment note</span>
+                    <span className="text-[10px] sm:text-[11px] text-zinc-400">Generate consignment note</span>
                   </div>
                 </div>
-                <ArrowRight size={14} className="text-zinc-500 group-hover/btn:translate-x-1 group-hover/btn:text-[#ef233c] transition-all" />
+                <ArrowRight size={14} className="text-zinc-500 group-hover/btn:translate-x-1 group-hover/btn:text-[#ef233c] transition-all shrink-0" />
               </button>
 
               <button
                 onClick={() => navigate('/all-llr')}
-                className="w-full p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-between text-left cursor-pointer group/btn"
+                className="w-full p-2.5 sm:p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-between text-left cursor-pointer group/btn"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">
-                    <FileSpreadsheet size={16} />
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold shrink-0">
+                    <FileSpreadsheet size={15} />
                   </div>
                   <div>
                     <span className="text-xs font-bold font-manrope text-white block">Search Archive</span>
-                    <span className="text-[11px] text-zinc-400">Filter all past receipts</span>
+                    <span className="text-[10px] sm:text-[11px] text-zinc-400">Filter past receipts</span>
                   </div>
                 </div>
-                <ArrowRight size={14} className="text-zinc-500 group-hover/btn:translate-x-1 group-hover/btn:text-blue-400 transition-all" />
+                <ArrowRight size={14} className="text-zinc-500 group-hover/btn:translate-x-1 group-hover/btn:text-blue-400 transition-all shrink-0" />
               </button>
 
               <button
                 onClick={() => navigate('/settings')}
-                className="w-full p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-between text-left cursor-pointer group/btn"
+                className="w-full p-2.5 sm:p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-between text-left cursor-pointer group/btn"
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold">
-                    <ShieldCheck size={16} />
+                <div className="flex items-center gap-2.5 sm:gap-3">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold shrink-0">
+                    <ShieldCheck size={15} />
                   </div>
                   <div>
                     <span className="text-xs font-bold font-manrope text-white block">Storage Backup Vault</span>
-                    <span className="text-[11px] text-zinc-400">Export &amp; import JSON</span>
+                    <span className="text-[10px] sm:text-[11px] text-zinc-400">Export &amp; import JSON</span>
                   </div>
                 </div>
-                <ArrowRight size={14} className="text-zinc-500 group-hover/btn:translate-x-1 group-hover/btn:text-purple-400 transition-all" />
+                <ArrowRight size={14} className="text-zinc-500 group-hover/btn:translate-x-1 group-hover/btn:text-purple-400 transition-all shrink-0" />
               </button>
             </div>
           </div>
@@ -434,22 +434,22 @@ const Dashboard = () => {
       </div>
 
       {/* 4. Recent Consignments Registry Card */}
-      <div className="p-7 border border-white/10 bg-black rounded-xl shadow-2xl">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-white/10">
+      <div className="p-4 sm:p-6 md:p-7 border border-white/10 bg-black rounded-xl shadow-2xl">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 pb-4 sm:pb-5 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="inline-flex p-2.5 rounded-lg bg-white/5 border border-white/10 text-[#ef233c]">
+            <div className="inline-flex p-2 sm:p-2.5 rounded-lg bg-white/5 border border-white/10 text-[#ef233c] shrink-0">
               <Layers size={18} />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-white font-manrope tracking-tight">Recent Consignments</h2>
-              <p className="text-xs text-zinc-400 font-light">
+              <h2 className="text-base sm:text-lg font-bold text-white font-manrope tracking-tight">Recent Consignments</h2>
+              <p className="text-[11px] sm:text-xs text-zinc-400 font-light">
                 Latest Lorry Receipts registered in your local dispatch queue
               </p>
             </div>
           </div>
 
           <button
-            className="group px-4 py-2 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-medium hover:text-white hover:bg-zinc-800 transition-all flex items-center gap-2 text-xs cursor-pointer"
+            className="group px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full bg-zinc-900 border border-zinc-800 text-zinc-300 font-medium hover:text-white hover:bg-zinc-800 transition-all flex items-center gap-2 text-xs cursor-pointer self-start sm:self-auto"
             onClick={() => navigate('/all-llr')}
           >
             <span>View All Records</span>

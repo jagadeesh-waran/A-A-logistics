@@ -25,7 +25,6 @@ import {
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useToastContext } from '../../components/Layout/Layout';
 
-/* ─── Superdesign Section Card ───────────────────────────────────────────── */
 const SectionCard = ({
   number,
   title,
@@ -38,24 +37,24 @@ const SectionCard = ({
 }) => {
   return (
     <div
-      className={`relative overflow-hidden p-6 md:p-7 border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black rounded-xl shadow-xl transition-all hover:border-white/20 ${className}`}
+      className={`relative overflow-hidden p-4 sm:p-6 md:p-7 border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black rounded-xl shadow-xl transition-all hover:border-white/20 ${className}`}
     >
-      <div className="flex items-center justify-between pb-5 mb-5 border-b border-white/10 flex-wrap gap-2">
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between pb-4 sm:pb-5 mb-4 sm:mb-5 border-b border-white/10 flex-wrap gap-2">
+        <div className="flex items-center gap-2.5 sm:gap-3">
           <div
-            className={`w-9 h-9 rounded-lg bg-white/5 border border-white/10 ${iconColor} flex items-center justify-center font-bold text-xs flex-shrink-0`}
+            className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/5 border border-white/10 ${iconColor} flex items-center justify-center font-bold text-xs shrink-0`}
           >
-            {Icon ? <Icon size={18} /> : String(number).padStart(2, '0')}
+            {Icon ? <Icon size={17} /> : String(number).padStart(2, '0')}
           </div>
           <div>
-            <h2 className="text-base font-bold text-white font-manrope tracking-tight">
+            <h2 className="text-sm sm:text-base font-bold text-white font-manrope tracking-tight">
               {title}
             </h2>
-            {subtitle && <p className="text-xs text-zinc-400 font-light">{subtitle}</p>}
+            {subtitle && <p className="text-[11px] sm:text-xs text-zinc-400 font-light">{subtitle}</p>}
           </div>
         </div>
         {badge && (
-          <span className="text-[10px] font-bold font-manrope px-3 py-1 rounded-full bg-white/5 text-zinc-300 border border-white/10 uppercase tracking-widest">
+          <span className="text-[9px] sm:text-[10px] font-bold font-manrope px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white/5 text-zinc-300 border border-white/10 uppercase tracking-widest">
             {badge}
           </span>
         )}
@@ -415,40 +414,33 @@ const CreateLLR = () => {
   ];
 
   return (
-    <div className="space-y-6 animate-fade-up max-w-[1400px] mx-auto pb-20">
+    <div className="space-y-4 sm:space-y-6 animate-fade-up max-w-[1400px] mx-auto pb-20">
       {/* 1. Header & Actions Bar */}
-      <div className="p-6 rounded-2xl border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black flex items-center justify-between flex-wrap gap-4 shadow-xl">
-        <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-xl bg-[#ef233c]/15 border border-[#ef233c]/30 flex items-center justify-center text-[#ef233c]">
-            {editMode ? <Edit2 size={18} /> : <FilePlus size={18} />}
+      <div className="p-4 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 shadow-xl">
+        <div className="flex items-center gap-3 sm:gap-4">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-[#ef233c]/15 border border-[#ef233c]/30 flex items-center justify-center text-[#ef233c] shrink-0">
+            {editMode ? <Edit2 size={17} /> : <FilePlus size={17} />}
           </div>
           <div>
-            <h1 className="text-base font-bold text-white font-manrope flex items-center gap-2">
-              {editMode ? 'Edit Consignment Record' : 'Generate Lorry Receipt (LLR)'}
-              <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-[#ef233c]/15 text-[#ef233c] border border-[#ef233c]/30 font-mono font-bold">
+            <h1 className="text-sm sm:text-base font-bold text-white font-manrope flex items-center gap-2 flex-wrap">
+              <span>{editMode ? 'Edit Consignment Record' : 'Generate Lorry Receipt (LLR)'}</span>
+              <span className="text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full bg-[#ef233c]/15 text-[#ef233c] border border-[#ef233c]/30 font-mono font-bold">
                 {editMode ? 'REVISION' : 'NEW DRAFT'}
               </span>
             </h1>
-            <p className="text-xs text-zinc-400 font-light mt-0.5">
+            <p className="text-[11px] sm:text-xs text-zinc-400 font-light mt-0.5">
               {editMode
-                ? `Editing consignment manifest for ${formData.llrNumber}`
-                : 'Fill parameters below to generate an official commercial consignment note'}
+                ? `Editing manifest for ${formData.llrNumber}`
+                : 'Fill parameters below to generate an official consignment note'}
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5">
-          <div className="hidden sm:flex items-center gap-2 bg-black border border-white/10 rounded-full px-4 py-1.5 mr-1">
-            <Hash size={12} className="text-[#ef233c]" />
-            <span className="text-xs font-mono font-bold text-zinc-300">
-              {formData.llrNumber}
-            </span>
-          </div>
-
+        <div className="flex items-center gap-2 flex-wrap sm:flex-nowrap">
           <button
             type="button"
             onClick={handleReset}
-            className="btn-secondary-noir h-9 px-4 text-xs"
+            className="btn-secondary-noir flex-1 sm:flex-none justify-center h-9 px-3 sm:px-4 text-xs"
           >
             <RotateCcw size={13} />
             <span>{editMode ? 'Cancel' : 'Reset'}</span>
@@ -457,19 +449,19 @@ const CreateLLR = () => {
           <button
             type="button"
             onClick={handlePreview}
-            className="btn-secondary-noir h-9 px-4 text-xs"
+            className="btn-secondary-noir flex-1 sm:flex-none justify-center h-9 px-3 sm:px-4 text-xs"
           >
             <Eye size={13} className="text-blue-400" />
-            <span>Preview LLR</span>
+            <span>Preview</span>
           </button>
 
           <button
             type="button"
             onClick={handleSave}
-            className="shiny-cta py-2 px-5 text-xs font-bold"
+            className="shiny-cta flex-1 sm:flex-none justify-center py-2 px-4 sm:px-5 text-xs font-bold whitespace-nowrap"
           >
             <Save size={13} className="text-[#ef233c]" />
-            <span>{editMode ? 'Update Record' : 'Save & Ship LLR'}</span>
+            <span>{editMode ? 'Update' : 'Save & Ship'}</span>
           </button>
         </div>
       </div>

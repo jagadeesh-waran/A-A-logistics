@@ -8,9 +8,9 @@
   left: 0;
   bottom: 0;
   width: var(--sidebar-width);
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(8, 9, 13, 0.95);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   color: #a1a1aa;
   z-index: 100;
   display: flex;
@@ -19,6 +19,72 @@
   user-select: none;
   overflow-x: hidden;
   border-right: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform var(--transition-base), width var(--transition-base);
+}
+
+/* Mobile backdrop */
+.sidebar-backdrop {
+  display: none;
+}
+
+/* Mobile close button */
+.sidebar-mobile-close {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    width: min(300px, 85vw);
+    transform: translateX(-100%);
+    z-index: 1000;
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.95);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-base);
+  }
+
+  .sidebar-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .sidebar-mobile-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #e4e4e7;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    z-index: 10;
+  }
+
+  .sidebar-mobile-close:hover {
+    background: rgba(239, 35, 60, 0.2);
+    border-color: #ef233c;
+    color: #ef233c;
+  }
 }
 
 /* Brand Header */

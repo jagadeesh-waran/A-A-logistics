@@ -31,19 +31,19 @@ const defaultCompany = {
 
 const SettingCard = ({ icon: Icon, title, subtitle, badge = '', iconColor = 'text-[#ef233c]', children }) => {
   return (
-    <div className="relative overflow-hidden p-6 md:p-7 border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black rounded-xl shadow-xl transition-all hover:border-white/20">
-      <div className="flex items-center justify-between pb-5 mb-5 border-b border-white/10 flex-wrap gap-2">
-        <div className="flex items-center gap-3">
-          <div className={`w-9 h-9 rounded-lg bg-white/5 border border-white/10 ${iconColor} flex items-center justify-center font-bold text-xs flex-shrink-0`}>
-            <Icon size={18} />
+    <div className="relative overflow-hidden p-4 sm:p-6 md:p-7 border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black rounded-xl shadow-xl transition-all hover:border-white/20">
+      <div className="flex items-center justify-between pb-4 sm:pb-5 mb-4 sm:mb-5 border-b border-white/10 flex-wrap gap-2">
+        <div className="flex items-center gap-2.5 sm:gap-3">
+          <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white/5 border border-white/10 ${iconColor} flex items-center justify-center font-bold text-xs shrink-0`}>
+            <Icon size={17} />
           </div>
           <div>
-            <h3 className="text-base font-bold text-white font-manrope tracking-tight">{title}</h3>
-            <p className="text-xs text-zinc-400 font-light mt-0.5">{subtitle}</p>
+            <h3 className="text-sm sm:text-base font-bold text-white font-manrope tracking-tight">{title}</h3>
+            <p className="text-[11px] sm:text-xs text-zinc-400 font-light mt-0.5">{subtitle}</p>
           </div>
         </div>
         {badge && (
-          <span className="text-[10px] font-bold font-manrope px-3 py-1 rounded-full bg-white/5 text-zinc-300 border border-white/10 uppercase tracking-widest">
+          <span className="text-[9px] sm:text-[10px] font-bold font-manrope px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-white/5 text-zinc-300 border border-white/10 uppercase tracking-widest">
             {badge}
           </span>
         )}
@@ -160,21 +160,21 @@ const Settings = () => {
   const totalLLRs = JSON.parse(localStorage.getItem('llrs') || '[]').length;
 
   return (
-    <div className="space-y-6 animate-fade-up max-w-5xl mx-auto pb-20">
+    <div className="space-y-4 sm:space-y-6 animate-fade-up max-w-5xl mx-auto pb-20">
       {/* 1. Header Banner */}
-      <div className="p-6 md:p-7 rounded-2xl border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black flex items-center justify-between flex-wrap gap-4 shadow-xl">
+      <div className="p-4 sm:p-6 md:p-7 rounded-2xl border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 shadow-xl">
         <div>
-          <h1 className="text-xl font-bold font-manrope text-white tracking-tight flex items-center gap-2">
+          <h1 className="text-base sm:text-lg md:text-xl font-bold font-manrope text-white tracking-tight flex items-center gap-2">
             System &amp; Company Preferences
           </h1>
-          <p className="text-xs text-zinc-400 font-light mt-0.5">
+          <p className="text-[11px] sm:text-xs text-zinc-400 font-light mt-0.5">
             Manage official receipt headers, billing defaults, and local database backup vault.
           </p>
         </div>
 
         <button
           onClick={handleSave}
-          className="shiny-cta text-xs py-2 px-5 font-bold"
+          className="shiny-cta text-xs py-2 px-5 font-bold justify-center"
         >
           <Save size={14} className="text-[#ef233c]" />
           <span>Save Preferences</span>

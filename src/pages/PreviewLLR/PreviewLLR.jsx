@@ -130,60 +130,61 @@ const PreviewLLR = () => {
   const gstAmount = subtotal * (gstPct / 100);
 
   return (
-    <div className="min-h-screen flex flex-col items-center animate-fade-up">
+    <div className="min-h-screen flex flex-col items-center animate-fade-up w-full">
       {/* 1. Sticky Action Toolbar */}
-      <div className="sticky top-0 z-40 w-full bg-black/80 backdrop-blur-2xl text-white border-b border-white/10 shadow-2xl print:hidden">
-        <div className="max-w-[210mm] mx-auto flex items-center justify-between px-4 py-3 flex-wrap gap-2">
-          <div className="flex items-center gap-2">
+      <div className="sticky top-0 z-40 w-full bg-black/90 backdrop-blur-2xl text-white border-b border-white/10 shadow-2xl print:hidden">
+        <div className="max-w-[210mm] mx-auto flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 flex-wrap gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
             <button
               onClick={handleBack}
-              className="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-inter text-zinc-300 flex items-center gap-1.5 transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-inter text-zinc-300 flex items-center gap-1.5 transition-all cursor-pointer"
             >
               <ArrowLeft size={13} />
               <span>Back</span>
             </button>
             <button
               onClick={handleEdit}
-              className="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-inter text-zinc-300 flex items-center gap-1.5 transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-inter text-zinc-300 flex items-center gap-1.5 transition-all cursor-pointer"
             >
               <Edit3 size={13} className="text-yellow-400" />
-              <span>Edit Data</span>
+              <span>Edit</span>
             </button>
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-1.5 sm:gap-2.5 flex-wrap">
             <button
               onClick={handlePrint}
-              className="px-3.5 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-inter text-zinc-300 flex items-center gap-1.5 transition-all cursor-pointer"
+              className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-inter text-zinc-300 flex items-center gap-1.5 transition-all cursor-pointer"
             >
               <Printer size={13} />
-              <span>Print LLR</span>
+              <span className="hidden sm:inline">Print LLR</span>
+              <span className="sm:hidden">Print</span>
             </button>
             <button
               onClick={handleDownloadPDF}
-              className="px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-inter text-zinc-300 hover:text-white hover:bg-zinc-800 flex items-center gap-1.5 transition-all cursor-pointer"
+              className="px-3 sm:px-4 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-inter text-zinc-300 hover:text-white hover:bg-zinc-800 flex items-center gap-1.5 transition-all cursor-pointer"
             >
               <Download size={13} className="text-[#ef233c]" />
-              <span>Download PDF</span>
+              <span className="hidden sm:inline">Download PDF</span>
+              <span className="sm:hidden">PDF</span>
             </button>
-            <span className="w-px h-6 bg-white/10 mx-0.5" />
             <button
               onClick={handleSave}
-              className="shiny-cta py-1.5 px-4 text-xs font-bold"
+              className="shiny-cta py-1.5 px-3 sm:px-4 text-xs font-bold whitespace-nowrap"
             >
               <Save size={13} className="text-[#ef233c]" />
-              <span>Save Record</span>
+              <span>Save</span>
             </button>
           </div>
         </div>
       </div>
 
       {/* 2. Official LORRY RECEIPT Document Sheet */}
-      <div className="py-8 print:py-0 print:bg-white flex flex-col items-center w-full">
-        <div className="w-full max-w-[210mm] bg-white border border-zinc-300 shadow-2xl rounded-sm print:shadow-none print:border-none">
+      <div className="w-full overflow-x-auto py-4 sm:py-8 px-2 sm:px-4 flex justify-start sm:justify-center print:p-0 print:overflow-visible">
+        <div className="min-w-[640px] sm:min-w-0 w-full max-w-[210mm] bg-white border border-zinc-300 shadow-2xl rounded-sm print:shadow-none print:border-none print:min-w-0">
           <div
             ref={llrRef}
-            className="p-6 border-4 border-double border-black m-2 min-h-[285mm] flex flex-col text-sm text-black font-sans print:m-0 print:min-h-0 bg-white"
+            className="p-4 sm:p-6 border-4 border-double border-black m-1 sm:m-2 min-h-[285mm] flex flex-col text-sm text-black font-sans print:m-0 print:min-h-0 bg-white"
           >
             {/* Document Header */}
             <div className="text-center pb-3 border-b-2 border-black">

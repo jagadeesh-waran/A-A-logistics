@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Search, Bell, LogOut, User, ChevronDown, Plus, Sparkles, ArrowRight } from 'lucide-react';
+import { Search, Bell, LogOut, User, ChevronDown, Plus, Menu, ArrowRight } from 'lucide-react';
 import './Navbar.css';
 
 const pageTitleMap = {
@@ -39,13 +39,14 @@ const getPageDetails = (pathname) => {
   };
 };
 
-const Navbar = () => {
+const Navbar = ({ onToggleSidebar = () => {} }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { title, breadcrumb, category } = getPageDetails(location.pathname);
 
   const [searchValue, setSearchValue] = useState('');
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [showMobileSearch, setShowMobileSearch] = useState(false);
   const userMenuRef = useRef(null);
 
   useEffect(() => {
@@ -62,6 +63,7 @@ const Navbar = () => {
     if (e.key === 'Enter' && searchValue.trim()) {
       navigate(`/all-llr?search=${encodeURIComponent(searchValue.trim())}`);
       setSearchValue('');
+      setShowMobileSearch(false);
     }
   };
 
@@ -72,37 +74,58 @@ const Navbar = () => {
 
   return (
     <header className="navbar-container">
-      {/* Left: Page Title, Category & Breadcrumb */}
+      {/* Left: Mobile Hamburger & Page Title */}
       <div className="navbar-left">
-        <div className="navbar-breadcrumb-row">
-          <span className="navbar-breadcrumb-chip font-manrope">{breadcrumb}</span>
-          <span className="navbar-breadcrumb-sep">&bull;</span>
-          <span className="navbar-breadcrumb-active font-inter">{category}</span>
+        {/* Mobile Hamburger Button */}
+        <button
+          onClick={onToggleSidebar}
+          className="navbar-hamburger-btn"
+          aria-label="Toggle navigation menu"
+          title="Open Menu"
+        >
+          <Menu size={20} />
+        </button>
+
+        {/* Mobile Mini Logo */}
+        <div
+          onClick={() => navigate('/dashboard')}
+          className="navbar-mobile-brand"
+        >
+          <img src="/logo.png" alt="A&A Logistics" className="w-8 h-8 object-contain" />
         </div>
-        <h1 className="navbar-title font-manrope">{title}</h1>
+
+        <div className="navbar-title-group">
+          <div className="navbar-breadcrumb-row">
+            <span className="navbar-breadcrumb-chip font-manrope">{breadcrumb}</span>
+            <span className="navbar-breadcrumb-sep">&bull;</span>
+            <span className="navbar-breadcrumb-active font-inter">{category}</span>
+          </div>
+          <h1 className="navbar-title font-manrope">{title}</h1>
+        </div>
       </div>
 
       {/* Right: Actions */}
       <div className="navbar-right">
-        {/* Quick New LLR Button (with reference spinning conic glow) */}
+        {/* Quick New LLR Button */}
         {location.pathname !== '/create-llr' && (
           <button
             onClick={() => navigate('/create-llr')}
-            className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-white/5 px-5 py-2 transition-transform active:scale-95 cursor-pointer"
+            className="navbar-new-llr-btn group"
+            title="Create New LLR"
           >
             <span className="absolute inset-0 border border-white/10 rounded-full" />
             <span className="absolute inset-[-100%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,transparent_0%,transparent_75%,#ef233c_100%)] opacity-0 group-hover:opacity-100 transition-opacity" />
             <span className="absolute inset-[1px] rounded-full bg-black" />
             <span className="relative z-10 flex items-center gap-1.5 text-xs font-bold font-manrope uppercase tracking-wider text-white">
-              <Plus size={13} className="text-[#ef233c]" />
-              <span>New LLR</span>
-              <ArrowRight size={12} className="text-[#ef233c] group-hover:translate-x-0.5 transition-transform" />
+              <Plus size={14} className="text-[#ef233c] shrink-0" />
+              <span className="hidden sm:inline">New LLR</span>
+              <ArrowRight size={12} className="text-[#ef233c] hidden sm:inline group-hover:translate-x-0.5 transition-transform" />
             </span>
           </button>
         )}
 
-        {/* Global Search Input */}
-        <div className="navbar-search-wrapper">
+        {/* Desktop Global Search Input */}
+        <div className="navbar-search-wrapper hidden md:flex">
           <Search className="navbar-search-icon" size={14} />
           <input
             type="text"
@@ -116,6 +139,16 @@ const Navbar = () => {
             <span>↵</span>
           </div>
         </div>
+
+        {/* Mobile Search Toggle Button */}
+        <button
+          onClick={() => setShowMobileSearch((prev) => !prev)}
+          className="navbar-icon-btn md:hidden"
+          aria-label="Search records"
+          title="Search"
+        >
+          <Search size={16} />
+        </button>
 
         {/* Live Notification Indicator */}
         <button className="navbar-icon-btn" aria-label="Notifications" title="System Notifications">
@@ -133,7 +166,7 @@ const Navbar = () => {
             <div className="navbar-user-avatar overflow-hidden p-0.5 bg-white/5 border border-white/10">
               <img src="/logo.png" alt="AA" className="w-full h-full object-contain rounded-full" />
             </div>
-            <div className="navbar-user-info hidden md:flex">
+            <div className="navbar-user-info hidden lg:flex">
               <span className="navbar-user-name font-manrope">A&amp;A Admin</span>
               <span className="navbar-user-badge font-inter">HQ Mumbai</span>
             </div>
@@ -178,6 +211,24 @@ const Navbar = () => {
           )}
         </div>
       </div>
+
+      {/* Mobile Search Row (Expandable) */}
+      {showMobileSearch && (
+        <div className="navbar-mobile-search-row md:hidden">
+          <div className="relative w-full">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-500" size={14} />
+            <input
+              type="text"
+              autoFocus
+              className="w-full h-9 pl-9 pr-4 rounded-full bg-zinc-900 border border-white/15 text-white text-xs placeholder:text-zinc-500 focus:outline-none focus:border-[#ef233c]"
+              placeholder="Search LLR, party, truck..."
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              onKeyDown={handleSearchKeyDown}
+            />
+          </div>
+        </div>
+      )}
     </header>
   );
 };
