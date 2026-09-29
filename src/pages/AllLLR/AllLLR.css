@@ -1,0 +1,11 @@
+/* ==========================================================================
+   Superdesign Red-Noir AllLLR Stylesheet
+   ========================================================================== */
+
+.registry-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1440px;
+  margin: 0 auto;
+}
