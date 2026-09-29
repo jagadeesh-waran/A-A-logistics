@@ -152,31 +152,31 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container animate-fade-up">
       {/* 1. Superdesign Style Hero Banner */}
-      <div className="superdesign-hero-banner relative p-5 sm:p-8 md:p-10 rounded-2xl border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black overflow-hidden shadow-2xl">
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6 sm:gap-8">
+      <div className="superdesign-hero-banner relative p-4 sm:p-7 md:p-10 rounded-2xl border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black overflow-hidden shadow-2xl">
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 sm:gap-8">
           <div className="max-w-2xl">
             {/* Live Indicator Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-4 sm:mb-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md mb-3 sm:mb-5">
               <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-[#ef233c]" />
               </span>
-              <span className="text-[11px] sm:text-xs font-medium font-manrope text-red-100/90 tracking-wide">
+              <span className="text-[10px] sm:text-xs font-medium font-manrope text-red-100/90 tracking-wide">
                 A&amp;A Logistics Intelligence 2.0 is live
               </span>
               <ArrowRight size={12} className="text-red-400 shrink-0" />
             </div>
 
             {/* Gradient Headline */}
-            <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight font-manrope leading-[1.15] mb-3 sm:mb-4">
-              <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/40">
+            <h1 className="text-xl sm:text-3xl md:text-5xl font-bold tracking-tight font-manrope leading-tight mb-2.5 sm:mb-4">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/60">
                 Logistics Intelligence
               </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/40">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/60">
                 for the{' '}
                 <span className="text-[#ef233c] inline-block relative">
                   Future
-                  <svg className="absolute w-full h-2.5 -bottom-1.5 left-0 text-[#ef233c] opacity-70" viewBox="0 0 100 10" preserveAspectRatio="none">
+                  <svg className="absolute w-full h-2 -bottom-1 left-0 text-[#ef233c] opacity-70" viewBox="0 0 100 10" preserveAspectRatio="none">
                     <path d="M0 5 Q 50 10 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
                   </svg>
                 </span>
@@ -188,9 +188,9 @@ const Dashboard = () => {
             </p>
           </div>
 
-          <div className="flex flex-row sm:flex-row md:flex-col items-center sm:items-center md:items-end justify-between sm:justify-start gap-3 sm:gap-4 w-full md:w-auto">
-            <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 border border-white/10 text-[11px] sm:text-xs font-inter text-zinc-300">
-              <Calendar size={13} className="text-[#ef233c] shrink-0" />
+          <div className="flex flex-row sm:flex-row md:flex-col items-center sm:items-center md:items-end justify-between sm:justify-start gap-2.5 sm:gap-4 w-full md:w-auto mt-1 sm:mt-0">
+            <div className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/5 border border-white/10 text-[10px] sm:text-xs font-inter text-zinc-300">
+              <Calendar size={12} className="text-[#ef233c] shrink-0" />
               <span className="whitespace-nowrap">{currentDateFormatted}</span>
             </div>
 
@@ -199,7 +199,7 @@ const Dashboard = () => {
               className="shiny-cta group text-xs sm:text-sm py-2 px-4 sm:px-6"
             >
               <span className="relative z-10 flex items-center gap-1.5 sm:gap-2 text-white font-medium whitespace-nowrap">
-                Generate LLR <ArrowRight size={14} className="transition-transform group-hover:translate-x-1 text-[#ef233c]" />
+                Generate LLR <ArrowRight size={13} className="transition-transform group-hover:translate-x-1 text-[#ef233c]" />
               </span>
             </button>
           </div>
@@ -213,34 +213,34 @@ const Dashboard = () => {
       </div>
 
       {/* 2. Key Performance Metric Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4">
         {statsCards.map((card) => {
           const Icon = card.icon;
           return (
             <div
               key={card.id}
-              className="group relative overflow-hidden p-4 sm:p-6 border border-white/10 bg-black hover:border-white/20 transition-all rounded-xl shadow-lg"
+              className="group relative overflow-hidden p-3.5 sm:p-5 border border-white/10 bg-black hover:border-white/20 transition-all rounded-xl shadow-lg flex flex-col justify-between"
             >
               <div className="relative z-10 flex flex-col h-full">
-                <div className="flex items-center justify-between mb-3 sm:mb-4">
-                  <div className={`inline-flex p-2 sm:p-2.5 rounded-lg bg-white/5 border border-white/10 ${card.iconColor}`}>
-                    <Icon size={18} />
+                <div className="flex items-center justify-between mb-2 sm:mb-3">
+                  <div className={`inline-flex p-1.5 sm:p-2 rounded-lg bg-white/5 border border-white/10 ${card.iconColor}`}>
+                    <Icon size={16} />
                   </div>
-                  <span className="text-[10px] sm:text-[11px] font-mono px-2 sm:px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-zinc-400">
+                  <span className="text-[9px] sm:text-[11px] font-mono px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-zinc-400">
                     {card.change}
                   </span>
                 </div>
 
-                <div className="mt-1">
-                  <span className="text-xl sm:text-2xl lg:text-3xl font-bold font-manrope text-white tracking-tight block mb-0.5 sm:mb-1">
+                <div className="mt-0.5">
+                  <span className="text-lg sm:text-2xl lg:text-3xl font-bold font-manrope text-white tracking-tight block mb-0.5">
                     {card.value}
                   </span>
-                  <span className="text-xs font-semibold text-zinc-400 font-manrope">
+                  <span className="text-[11px] sm:text-xs font-semibold text-zinc-400 font-manrope leading-tight block">
                     {card.title}
                   </span>
                 </div>
 
-                <div className="mt-3 sm:mt-4 pt-2.5 sm:pt-3 border-t border-white/5">
+                <div className="mt-2 pt-2 border-t border-white/5 hidden sm:block">
                   <span
                     className="text-[10px] sm:text-[11px] text-zinc-500 font-inter"
                     dangerouslySetInnerHTML={{ __html: card.subtext }}
@@ -263,28 +263,28 @@ const Dashboard = () => {
         {/* Main Bento Feature: Dispatch System Engine */}
         <div className="lg:col-span-2 group relative overflow-hidden p-4 sm:p-6 md:p-7 border border-white/10 bg-gradient-to-b from-zinc-900/50 to-black hover:border-white/20 transition-all rounded-xl shadow-xl">
           <div className="relative z-10 flex flex-col h-full">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-6">
-              <div className="flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 mb-3 sm:mb-6">
+              <div className="flex items-center gap-2.5 sm:gap-3">
                 <div className="inline-flex p-2 sm:p-2.5 rounded-lg bg-white/5 border border-white/10 text-[#ef233c] shrink-0">
                   <Activity size={18} />
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-white font-manrope tracking-tight">
+                  <h3 className="text-sm sm:text-lg md:text-xl font-bold text-white font-manrope tracking-tight">
                     Operating System for Freight Dispatch
                   </h3>
-                  <p className="text-[11px] sm:text-xs text-zinc-400 font-light">
+                  <p className="text-[10px] sm:text-xs text-zinc-400 font-light">
                     Real-time status breakdown and fleet synchronization
                   </p>
                 </div>
               </div>
-              <span className="self-start sm:self-center text-xs font-mono text-[#ef233c] bg-[#ef233c]/10 border border-[#ef233c]/20 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full font-bold">
+              <span className="self-start sm:self-center text-[10px] sm:text-xs font-mono text-[#ef233c] bg-[#ef233c]/10 border border-[#ef233c]/20 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full font-bold">
                 {totalLLR} Records
               </span>
             </div>
 
             {/* Stacked Progress Bar */}
-            <div className="space-y-3 sm:space-y-4 my-auto">
-              <div className="flex h-2.5 rounded-full overflow-hidden bg-white/5 gap-1 p-0.5">
+            <div className="space-y-2.5 sm:space-y-4 my-auto">
+              <div className="flex h-2 sm:h-2.5 rounded-full overflow-hidden bg-white/5 gap-1 p-0.5">
                 <div
                   style={{ width: `${deliveryRate}%` }}
                   className="bg-emerald-500 rounded-full transition-all duration-500"
@@ -302,43 +302,44 @@ const Dashboard = () => {
                 />
               </div>
 
+              {/* Clean 2x2 Grid on Mobile & 4-column on Tablets/Desktop */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
                 <div className="p-2.5 sm:p-3.5 rounded-xl bg-black border border-white/5">
-                  <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-emerald-400 mb-0.5 sm:mb-1 font-manrope font-semibold">
+                  <div className="flex items-center gap-1.5 text-[10px] sm:text-xs text-emerald-400 mb-0.5 font-manrope font-semibold">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
                     <span>Delivered</span>
                   </div>
-                  <div className="text-base sm:text-lg font-bold font-manrope text-white">
+                  <div className="text-sm sm:text-lg font-bold font-manrope text-white">
                     {deliveredLLR} <span className="text-[10px] sm:text-xs font-normal text-zinc-500">({deliveryRate}%)</span>
                   </div>
                 </div>
 
                 <div className="p-2.5 sm:p-3.5 rounded-xl bg-black border border-white/5">
-                  <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-amber-400 mb-0.5 sm:mb-1 font-manrope font-semibold">
+                  <div className="flex items-center gap-1.5 text-[10px] sm:text-xs text-amber-400 mb-0.5 font-manrope font-semibold">
                     <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
                     <span>In Transit</span>
                   </div>
-                  <div className="text-base sm:text-lg font-bold font-manrope text-white">
+                  <div className="text-sm sm:text-lg font-bold font-manrope text-white">
                     {inTransitLLR} <span className="text-[10px] sm:text-xs font-normal text-zinc-500">({transitRate}%)</span>
                   </div>
                 </div>
 
                 <div className="p-2.5 sm:p-3.5 rounded-xl bg-black border border-white/5">
-                  <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-blue-400 mb-0.5 sm:mb-1 font-manrope font-semibold">
+                  <div className="flex items-center gap-1.5 text-[10px] sm:text-xs text-blue-400 mb-0.5 font-manrope font-semibold">
                     <span className="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0" />
                     <span>Booked</span>
                   </div>
-                  <div className="text-base sm:text-lg font-bold font-manrope text-white">
+                  <div className="text-sm sm:text-lg font-bold font-manrope text-white">
                     {bookedLLR} <span className="text-[10px] sm:text-xs font-normal text-zinc-500">({bookedRate}%)</span>
                   </div>
                 </div>
 
                 <div className="p-2.5 sm:p-3.5 rounded-xl bg-black border border-white/5">
-                  <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-red-400 mb-0.5 sm:mb-1 font-manrope font-semibold">
+                  <div className="flex items-center gap-1.5 text-[10px] sm:text-xs text-red-400 mb-0.5 font-manrope font-semibold">
                     <span className="w-1.5 h-1.5 rounded-full bg-[#ef233c] shrink-0" />
                     <span>Cancelled</span>
                   </div>
-                  <div className="text-base sm:text-lg font-bold font-manrope text-white">
+                  <div className="text-sm sm:text-lg font-bold font-manrope text-white">
                     {cancelledLLR}{' '}
                     <span className="text-[10px] sm:text-xs font-normal text-zinc-500">
                       ({totalLLR > 0 ? Math.round((cancelledLLR / totalLLR) * 100) : 0}%)
@@ -348,8 +349,8 @@ const Dashboard = () => {
               </div>
             </div>
 
-            <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-white/5 flex items-center justify-between">
-              <span className="text-[11px] sm:text-xs text-zinc-400">All local manifests validated</span>
+            <div className="mt-3 sm:mt-6 pt-2.5 sm:pt-4 border-t border-white/5 flex items-center justify-between">
+              <span className="text-[10px] sm:text-xs text-zinc-400">All local manifests validated</span>
               <button
                 onClick={() => navigate('/all-llr')}
                 className="text-xs font-mono text-[#ef233c] hover:underline flex items-center gap-1 cursor-pointer"
@@ -368,17 +369,17 @@ const Dashboard = () => {
         {/* Bento Feature 2: Quick Action Console */}
         <div className="group relative overflow-hidden p-4 sm:p-6 md:p-7 border border-white/10 bg-black hover:border-white/20 transition-all rounded-xl flex flex-col justify-between shadow-xl">
           <div className="relative z-10">
-            <div className="flex items-center gap-2.5 mb-4 sm:mb-5">
+            <div className="flex items-center gap-2.5 mb-3 sm:mb-5">
               <div className="inline-flex p-2 sm:p-2.5 rounded-lg bg-white/5 border border-white/10 text-yellow-400 shrink-0">
                 <Zap size={18} />
               </div>
               <h3 className="text-base sm:text-lg font-bold text-white font-manrope">Instant Dispatch</h3>
             </div>
 
-            <div className="space-y-2.5 sm:space-y-3">
+            <div className="space-y-2 sm:space-y-3">
               <button
                 onClick={() => navigate('/create-llr')}
-                className="w-full p-2.5 sm:p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-between text-left cursor-pointer group/btn"
+                className="w-full min-h-[44px] p-2.5 sm:p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-between text-left cursor-pointer group/btn"
               >
                 <div className="flex items-center gap-2.5 sm:gap-3">
                   <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-[#ef233c]/20 text-[#ef233c] flex items-center justify-center font-bold shrink-0">
@@ -394,7 +395,7 @@ const Dashboard = () => {
 
               <button
                 onClick={() => navigate('/all-llr')}
-                className="w-full p-2.5 sm:p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-between text-left cursor-pointer group/btn"
+                className="w-full min-h-[44px] p-2.5 sm:p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-between text-left cursor-pointer group/btn"
               >
                 <div className="flex items-center gap-2.5 sm:gap-3">
                   <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold shrink-0">
@@ -410,7 +411,7 @@ const Dashboard = () => {
 
               <button
                 onClick={() => navigate('/settings')}
-                className="w-full p-2.5 sm:p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-between text-left cursor-pointer group/btn"
+                className="w-full min-h-[44px] p-2.5 sm:p-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all flex items-center justify-between text-left cursor-pointer group/btn"
               >
                 <div className="flex items-center gap-2.5 sm:gap-3">
                   <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold shrink-0">
@@ -457,8 +458,8 @@ const Dashboard = () => {
           </button>
         </div>
 
-        <div className="overflow-x-auto mt-4">
-          <table className="w-full text-left border-collapse">
+        <div className="overflow-x-auto mt-4 -mx-4 sm:mx-0 px-4 sm:px-0">
+          <table className="min-w-[680px] w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-white/10 text-[11px] uppercase tracking-wider font-bold text-zinc-400 font-manrope">
                 <th className="py-3 px-4">LLR Identifier</th>

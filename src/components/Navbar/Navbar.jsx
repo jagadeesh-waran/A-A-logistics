@@ -95,12 +95,15 @@ const Navbar = ({ onToggleSidebar = () => {} }) => {
         </div>
 
         <div className="navbar-title-group">
-          <div className="navbar-breadcrumb-row">
+          <div className="navbar-breadcrumb-row hidden sm:flex">
             <span className="navbar-breadcrumb-chip font-manrope">{breadcrumb}</span>
             <span className="navbar-breadcrumb-sep">&bull;</span>
             <span className="navbar-breadcrumb-active font-inter">{category}</span>
           </div>
-          <h1 className="navbar-title font-manrope">{title}</h1>
+          <h1 className="navbar-title font-manrope">
+            <span className="hidden sm:inline">{title}</span>
+            <span className="sm:hidden text-xs font-bold font-manrope text-white tracking-wider uppercase">A&amp;A Logistics</span>
+          </h1>
         </div>
       </div>
 

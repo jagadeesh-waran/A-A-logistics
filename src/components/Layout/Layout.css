@@ -40,6 +40,7 @@
 
 @media (max-width: 640px) {
   .layout__content {
-    padding: 1rem 0.75rem 2rem;
+    padding: 0.875rem 1rem 1.25rem;
+    min-height: auto;
   }
 }
